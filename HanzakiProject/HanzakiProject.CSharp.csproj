@@ -63,19 +63,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\StatsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\Level1\ignore.txt" />
     <None Include="Assets\Art\Level2\ignore.txt" />
     <None Include="Assets\Art\Level3\ignore.txt" />
     <None Include="Assets\Art\Shared\ignore.txt" />
-    <None Include="Assets\Audio\AMB\ignore.txt" />
-    <None Include="Assets\Audio\BGM\ignore.txt" />
-    <None Include="Assets\Audio\SFX\ignore.txt" />
-    <None Include="Assets\Scripts\ignore.txt" />
+    <None Include="Assets\Sound\AMB\ignore.txt" />
+    <None Include="Assets\Sound\BGM\ignore.txt" />
+    <None Include="Assets\Sound\SFX\ignore.txt" />
     <None Include="Assets\Sprites\ignore.txt" />
-    <None Include="Assets\ignore.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
