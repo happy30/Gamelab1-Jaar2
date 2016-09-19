@@ -30,7 +30,9 @@ public class PlayerController : MonoBehaviour
         //Change speed to runspeed if Shift is pressed
         speed = Input.GetKey(KeyCode.LeftShift) ? stats.runSpeed : stats.walkSpeed;
 
-        xMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+
+         xMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        
 
 
         //Make the player not able to hump the wall
@@ -49,7 +51,11 @@ public class PlayerController : MonoBehaviour
                 xMovement = 0;
             }
         }
-        transform.Translate(new Vector3(xMovement, 0, 0));
+
+        if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
+        {
+            transform.Translate(new Vector3(xMovement, 0, 0));
+        }
 
 
 
@@ -75,4 +81,22 @@ public class PlayerController : MonoBehaviour
         return null;
     }
 
+    void OnTriggerStay(Collider col)
+    {
+        if(col.gameObject.tag == "Interact")
+        {
+            if(col.gameObject.GetComponent<InteractScript>().interactType == InteractScript.InteractType.OnTrigger)
+            {
+                col.gameObject.GetComponent<InteractScript>().linkedObject.GetComponent<Activate>().activated = true;
+            }
+            else if(col.gameObject.GetComponent<InteractScript>().interactType == InteractScript.InteractType.OnInput)
+            {
+                //ui.show interact text
+                if(Input.GetKey(InputManager.Slash))
+                {
+                    col.gameObject.GetComponent<InteractScript>().linkedObject.GetComponent<Activate>().activated = true;
+                }
+            }
+        }
+    }
 }

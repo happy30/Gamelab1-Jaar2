@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     public float followTime;
     public bool inCutscene;
 
+    public GameObject followObject;
+
 
 	// Use this for initialization
 	void Start ()
@@ -28,6 +30,14 @@ public class CameraController : MonoBehaviour
         {
             FollowPlayer();
         }
+        else
+        {
+            if(followObject != null)
+            {
+                FollowObject(followObject);
+            }
+        }
+
         
     }
 
@@ -48,5 +58,10 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffset, transform.position.y, -10f), followTime * Time.deltaTime);
+    }
+
+    public void FollowObject(GameObject followThis)
+    {
+        transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -10f), followTime * Time.deltaTime);
     }
 }
