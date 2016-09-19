@@ -10,6 +10,7 @@ public class StatsManager : MonoBehaviour
     public int health;
     public int maxHealth;
 
+    public int hookParts;
     public bool katanaUnlocked;
     public bool grapplingHookUnlocked;
     public bool shurikenUnlocked;
@@ -22,6 +23,15 @@ public class StatsManager : MonoBehaviour
     {
         maxHealth++;
         health++;
+    }
+
+    public void AddHookPart()
+    {
+        hookParts++;
+        if(hookParts >= 2)
+        {
+            grapplingHookUnlocked = true;
+        }
     }
 
     public void GetHealth()
