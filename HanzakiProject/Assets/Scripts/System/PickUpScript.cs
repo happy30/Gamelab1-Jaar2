@@ -5,16 +5,7 @@ public class PickUpScript : MonoBehaviour {
 
     public StatsManager stats;
 
-    public enum PickUpTypes
-    {
-        Hook,
-        Rope,
-        Heart,
-        Health,
-        Shuriken,
-        SmokeBomb,
-        Blade
-    }
+    public enum PickUpTypes { Hook, Rope, Heart, Health, Shuriken, SmokeBomb, Katana }
     public PickUpTypes pickUpTypes;
 
     void Start()
@@ -30,14 +21,37 @@ public class PickUpScript : MonoBehaviour {
             if(pickUpTypes == PickUpTypes.Hook)
             {
                 stats.AddHookPart();
+                Destroy(gameObject);
             }
             if(pickUpTypes == PickUpTypes.Rope)
             {
                 stats.AddHookPart();
+                Destroy(gameObject);
             }
             if (pickUpTypes == PickUpTypes.Heart)
             {
                 stats.GetLife();
+                Destroy(gameObject);
+            }
+            if(pickUpTypes == PickUpTypes.Health)
+            {
+                stats.GetHealth();
+                Destroy(gameObject);
+            }
+            if (pickUpTypes == PickUpTypes.Shuriken)
+            {
+                stats.shurikenUnlocked = true;
+                Destroy(gameObject);
+            }
+            if (pickUpTypes == PickUpTypes.SmokeBomb)
+            {
+                stats.smokeBombUnlocked = true;
+                Destroy(gameObject);
+            }
+            if (pickUpTypes == PickUpTypes.Katana)
+            {
+                stats.katanaUnlocked = true;
+                Destroy(gameObject);
             }
         }
     }
