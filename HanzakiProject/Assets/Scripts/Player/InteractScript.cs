@@ -5,18 +5,12 @@ using System.Collections;
 
 public class InteractScript : MonoBehaviour
 {
-    public bool isTriggered;
-	
-
-    void OnTriggerEnter(Collider col)
+    public enum InteractType
     {
-        if(col.gameObject.tag == "Player")
-        {
-            //ui.showinteracttext;
-            if(Input.GetButtonDown("Slash"))
-            {
-                isTriggered = true;
-            }
-        }
-    }
+        OnTrigger,
+        OnInput
+    };
+
+    public InteractType interactType;
+    public GameObject linkedObject;
 }
