@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Player\GrapplingHookScript.cs" />
     <Compile Include="Assets\Scripts\Player\InteractScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\System\DestructibleScript.cs" />
@@ -83,6 +84,10 @@
     <None Include="Assets\Art\Level2\ignore.txt" />
     <None Include="Assets\Art\Level3\ignore.txt" />
     <None Include="Assets\Art\Shared\ignore.txt" />
+    <None Include="Assets\Art\ToonShading\Shaders\ToonBasic.shader" />
+    <None Include="Assets\Art\ToonShading\Shaders\ToonBasicOutline.shader" />
+    <None Include="Assets\Art\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Art\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\Sound\AMB\ignore.txt" />
     <None Include="Assets\Sound\BGM\ignore.txt" />
     <None Include="Assets\Sound\SFX\ignore.txt" />
