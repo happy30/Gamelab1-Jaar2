@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\System\DestructibleScript.cs" />
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\InputManager.cs" />
+    <Compile Include="Assets\Scripts\System\LevelPortal.cs" />
     <Compile Include="Assets\Scripts\System\LoadController.cs" />
     <Compile Include="Assets\Scripts\System\OptionsSettings.cs" />
     <Compile Include="Assets\Scripts\System\PickUpScript.cs" />
