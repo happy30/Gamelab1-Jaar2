@@ -63,12 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Assets\Scripts\DestructibleScript.cs" />
-    <Compile Include="Assets\Scripts\PickUpScript.cs" />
     <Compile Include="Assets\Scripts\Player\Activate.cs" />
-=======
->>>>>>> 01a5a67f0c7c6807985ddfaf28ac861824b65319
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\GrapplingHookScript.cs" />
     <Compile Include="Assets\Scripts\Player\InteractScript.cs" />
@@ -84,6 +79,8 @@
     <Compile Include="Assets\Scripts\System\QuestClass.cs" />
     <Compile Include="Assets\Scripts\System\QuestManager.cs" />
     <Compile Include="Assets\Scripts\System\StatsManager.cs" />
+    <Compile Include="Assets\Scripts\UI\CutsceneController.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\WaterController.cs" />
   </ItemGroup>
   <ItemGroup>

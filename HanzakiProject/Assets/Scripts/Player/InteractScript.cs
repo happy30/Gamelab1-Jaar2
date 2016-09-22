@@ -11,6 +11,51 @@ public class InteractScript : MonoBehaviour
         OnInput
     };
 
+    public UIManager ui;
+
     public InteractType interactType;
     public GameObject linkedObject;
+    CutsceneController _cutsceneController;
+
+    public float coolDown;
+    public bool startCoolDown;
+    public string interactText;
+
+    void Awake()
+    {
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _cutsceneController = GetComponent<CutsceneController>();
+    }
+
+    void Update()
+    {
+        if(startCoolDown)
+        {
+            coolDown -= Time.deltaTime;
+            if(coolDown < 0)
+            {
+                startCoolDown = false;
+                coolDown = 0;
+            }
+        }
+    }
+
+    public void Activate()
+    {
+        if (!linkedObject.GetComponent<Activate>().activated && coolDown <= 0)
+        {
+            linkedObject.GetComponent<Activate>().activated = true;
+            ui.EnterCutscene();
+            _cutsceneController.Activate();
+        }
+        
+    }
+
+    public void DeActivate()
+    {
+        linkedObject.GetComponent<Activate>().activated = false;
+        ui.ExitCutscene();
+        coolDown = 1;
+        startCoolDown = true;
+    }
 }

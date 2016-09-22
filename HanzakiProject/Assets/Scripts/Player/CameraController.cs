@@ -62,6 +62,6 @@ public class CameraController : MonoBehaviour
 
     public void FollowObject(GameObject followThis)
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -10f), followTime * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);
     }
 }

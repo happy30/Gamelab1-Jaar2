@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     //Components
     Rigidbody _rb;
     public StatsManager stats;
+    public UIManager ui;
+
 
     //Movement
     float speed;
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
 	void Start ()
     {
         _rb = GetComponent<Rigidbody>();
+        ui = GameObject.Find("Canvas").GetComponent<UIManager>();
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
         modelWidth = 1;
 
@@ -87,16 +90,17 @@ public class PlayerController : MonoBehaviour
         {
             if(col.gameObject.GetComponent<InteractScript>().interactType == InteractScript.InteractType.OnTrigger)
             {
-                col.gameObject.GetComponent<InteractScript>().linkedObject.GetComponent<Activate>().activated = true;
+                col.gameObject.GetComponent<InteractScript>().Activate();
             }
             else if(col.gameObject.GetComponent<InteractScript>().interactType == InteractScript.InteractType.OnInput)
             {
-                //ui.show interact text
+                ui.ChangeInteractText(col.gameObject.GetComponent<InteractScript>());
                 if(Input.GetKey(InputManager.Slash))
                 {
-                    col.gameObject.GetComponent<InteractScript>().linkedObject.GetComponent<Activate>().activated = true;
+                    col.gameObject.GetComponent<InteractScript>().Activate();
                 }
             }
+            ui.interactText.text = "";
         }
     }
 }

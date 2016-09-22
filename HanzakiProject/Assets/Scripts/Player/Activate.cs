@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Activate by Jordi
+
+using UnityEngine;
 using System.Collections;
 
 public class Activate : MonoBehaviour
@@ -11,6 +13,10 @@ public class Activate : MonoBehaviour
         {
             Camera.main.gameObject.GetComponent<CameraController>().followObject = gameObject;
             Camera.main.gameObject.GetComponent<CameraController>().inCutscene = true;
+        }
+        else
+        {
+            Camera.main.gameObject.GetComponent<CameraController>().inCutscene = false;
         }
     }
 }
