@@ -1,29 +1,39 @@
-﻿using UnityEngine;
+﻿//Made by Sascha Greve
+
+using UnityEngine;
 using System.Collections;
 
-public class PickUpScript : MonoBehaviour {
-
+public class PickUpScript : MonoBehaviour
+{
     public StatsManager stats;
 
-    public enum PickUpTypes { Hook, Rope, Heart, Health, Shuriken, SmokeBomb, Katana }
+    public enum PickUpTypes
+    {
+        HookPart,
+        Heart,
+        Health,
+        Shuriken,
+        SmokeBomb,
+        Katana
+    };
+
     public PickUpTypes pickUpTypes;
 
-    void Start()
+    void Awake()
     {
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
-
     }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            if(pickUpTypes == PickUpTypes.Hook)
+            if(pickUpTypes == PickUpTypes.HookPart)
             {
                 stats.AddHookPart();
                 Destroy(gameObject);
             }
-            if(pickUpTypes == PickUpTypes.Rope)
+            if(pickUpTypes == PickUpTypes.HookPart)
             {
                 stats.AddHookPart();
                 Destroy(gameObject);
