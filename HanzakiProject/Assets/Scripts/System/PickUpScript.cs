@@ -40,12 +40,22 @@ public class PickUpScript : MonoBehaviour {
             }
             if (pickUpTypes == PickUpTypes.Shuriken)
             {
-                stats.shurikenUnlocked = true;
+                if (stats.shurikenUnlocked != true)
+                {
+                    stats.shurikenUnlocked = true;
+                    stats.shurikenAmount++;
+                }
+                else stats.shurikenAmount++;
                 Destroy(gameObject);
             }
             if (pickUpTypes == PickUpTypes.SmokeBomb)
             {
-                stats.smokeBombUnlocked = true;
+                if (stats.smokeBombUnlocked != true)
+                {
+                    stats.smokeBombUnlocked = true;
+                    stats.smokeBombAmount++;
+                }
+                else stats.smokeBombAmount++;
                 Destroy(gameObject);
             }
             if (pickUpTypes == PickUpTypes.Katana)
