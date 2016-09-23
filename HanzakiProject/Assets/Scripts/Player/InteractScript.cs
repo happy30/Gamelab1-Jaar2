@@ -44,7 +44,7 @@ public class InteractScript : MonoBehaviour
     {
         if (!linkedObject.GetComponent<Activate>().activated && coolDown <= 0)
         {
-            linkedObject.GetComponent<Activate>().activated = true;
+            linkedObject.GetComponent<Activate>().FocusCamera();
             ui.EnterCutscene();
             _cutsceneController.Activate();
         }
@@ -53,7 +53,7 @@ public class InteractScript : MonoBehaviour
 
     public void DeActivate()
     {
-        linkedObject.GetComponent<Activate>().activated = false;
+        linkedObject.GetComponent<Activate>().DefocusCamera();
         ui.ExitCutscene();
         coolDown = 1;
         startCoolDown = true;

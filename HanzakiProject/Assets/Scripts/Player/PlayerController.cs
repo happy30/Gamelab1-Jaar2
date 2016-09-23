@@ -99,8 +99,17 @@ public class PlayerController : MonoBehaviour
                 {
                     col.gameObject.GetComponent<InteractScript>().Activate();
                 }
+                if(col.gameObject.GetComponent<InteractScript>().linkedObject.GetComponent<Activate>().activated)
+                {
+                    ui.RemoveInteractText();
+                }
             }
-            ui.interactText.text = "";
+            
         }
+    }
+
+    void OnTriggerExit()
+    {
+        ui.RemoveInteractText();
     }
 }

@@ -83,6 +83,9 @@ public class CutsceneController : MonoBehaviour
     //End the chat
     public void DeActivate()
     {
+        print("deactivated");
+        ui.npcNameTextObject.GetComponent<Animator>().SetBool("FadeIn", false);
+        ui.npcNameText.color = new Color(255, 255, 255, 0);
         currentText = 0;
         if(_interact.interactType == InteractScript.InteractType.OnTrigger)
         {
@@ -118,6 +121,7 @@ public class CutsceneController : MonoBehaviour
     IEnumerator DelayBeforeText()
     {
         yield return new WaitForSeconds(1f);
+
         currentText = 0;
         ui.chatPanel.SetActive(true);
         fullDialogueLine = CutsceneText[currentText];
