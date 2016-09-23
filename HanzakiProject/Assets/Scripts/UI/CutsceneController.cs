@@ -10,11 +10,12 @@ public class CutsceneController : MonoBehaviour
         OneTimeCutscene
     };
 
-    CutsceneType cutsceneType;
+    public CutsceneType cutsceneType;
 
     public QuestManager questManager;
     public UIManager ui;
     InteractScript _interact;
+    public ProgressionManager progressionManager;
 
 
     public string npcName;
@@ -37,6 +38,7 @@ public class CutsceneController : MonoBehaviour
         _interact = GetComponent<InteractScript>();
         questManager = GameObject.Find("GameManager").GetComponent<QuestManager>();
         ui = GameObject.Find("Canvas").GetComponent<UIManager>();
+        progressionManager = GameObject.Find("GameManager").GetComponent<ProgressionManager>();
     }
 
     void Start()
@@ -83,12 +85,16 @@ public class CutsceneController : MonoBehaviour
     //End the chat
     public void DeActivate()
     {
-        print("deactivated");
         ui.npcNameTextObject.GetComponent<Animator>().SetBool("FadeIn", false);
         ui.npcNameText.color = new Color(255, 255, 255, 0);
         currentText = 0;
         if(_interact.interactType == InteractScript.InteractType.OnTrigger)
         {
+            
+            if(cutsceneType == CutsceneType.MainQuest)
+            {
+                //questManager.CompleteMainQuest();
+            }
             Destroy(_interact.gameObject);
         }
         _interact.DeActivate();
