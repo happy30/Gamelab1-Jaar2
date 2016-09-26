@@ -29,10 +29,16 @@ public class InteractScript : MonoBehaviour
 
     void Update()
     {
-        if(startCoolDown)
+        CoolDown();
+    }
+
+    //Add a small delay in which we can't interact with the same thing directly.
+    void CoolDown()
+    {
+        if (startCoolDown)
         {
             coolDown -= Time.deltaTime;
-            if(coolDown < 0)
+            if (coolDown < 0)
             {
                 startCoolDown = false;
                 coolDown = 0;
@@ -40,6 +46,7 @@ public class InteractScript : MonoBehaviour
         }
     }
 
+    //Activate the trigger we are standing in
     public void Activate()
     {
         if (!linkedObject.GetComponent<Activate>().activated && coolDown <= 0)
@@ -51,6 +58,7 @@ public class InteractScript : MonoBehaviour
         
     }
 
+    //Stop the cutscene
     public void DeActivate()
     {
         linkedObject.GetComponent<Activate>().DefocusCamera();

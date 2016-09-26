@@ -60,6 +60,7 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffset, transform.position.y, -10f), followTime * Time.deltaTime);
     }
 
+    //Focus the camera on an object
     public void FollowObject(GameObject followThis)
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);

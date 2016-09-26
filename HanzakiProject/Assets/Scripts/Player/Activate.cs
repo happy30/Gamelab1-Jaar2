@@ -7,18 +7,7 @@ public class Activate : MonoBehaviour
 {
     public bool activated;
 
-    void Update()
-    {
-        if(activated)
-        {
-            
-        }
-        else
-        {
-            
-        }
-    }
-
+    //Focus the camera on the object
     public void FocusCamera()
     {
         Camera.main.gameObject.GetComponent<CameraController>().followObject = gameObject;
@@ -26,6 +15,7 @@ public class Activate : MonoBehaviour
         activated = true;
     }
 
+    //Focus the camera back to the player
     public void DefocusCamera()
     {
         Camera.main.gameObject.GetComponent<CameraController>().inCutscene = false;
