@@ -41,4 +41,22 @@ public class StatsManager : MonoBehaviour
             health++;
         }
     }
+
+    public void AddShuriken()
+    {
+        shurikenUnlocked = true;
+        shurikenAmount++;
+    }
+
+    public void AddSmokeBomb()
+    {
+        smokeBombUnlocked = true;
+        smokeBombAmount++;
+    }
+
+    public void AddKatana()
+    {
+        katanaUnlocked = true;
+        GameObject.Find("Katana").GetComponent<Katana>().UpgradeWeapon();
+    }
 }

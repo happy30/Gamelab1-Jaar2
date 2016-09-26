@@ -101,27 +101,28 @@
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\Twirl.cs" />
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\Vortex.cs" />
+    <Compile Include="Assets\Scripts\Environment\DestructibleScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\WaterController.cs" />
+    <Compile Include="Assets\Scripts\Environment\WaterOffset.cs" />
     <Compile Include="Assets\Scripts\Player\Activate.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\GrapplingHookScript.cs" />
     <Compile Include="Assets\Scripts\Player\InteractScript.cs" />
+    <Compile Include="Assets\Scripts\Player\Katana.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\System\DestructibleScript.cs" />
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\InputManager.cs" />
     <Compile Include="Assets\Scripts\System\LevelPortal.cs" />
     <Compile Include="Assets\Scripts\System\LoadController.cs" />
     <Compile Include="Assets\Scripts\System\OptionsSettings.cs" />
-    <Compile Include="Assets\Scripts\System\PickUpScript.cs" />
     <Compile Include="Assets\Scripts\System\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\System\ProgressionManager.cs" />
     <Compile Include="Assets\Scripts\System\QuestClass.cs" />
     <Compile Include="Assets\Scripts\System\QuestManager.cs" />
     <Compile Include="Assets\Scripts\System\StatsManager.cs" />
-    <Compile Include="Assets\Scripts\System\WaterOffset.cs" />
     <Compile Include="Assets\Scripts\UI\CutsceneController.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
-    <Compile Include="Assets\Scripts\WaterController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Art\Level1\ignore.txt" />
