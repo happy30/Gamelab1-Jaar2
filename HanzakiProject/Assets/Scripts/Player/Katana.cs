@@ -11,7 +11,7 @@ public class Katana : MonoBehaviour
     };
     public SwordType swordType;
 
-
+    public Transform playerModel;
     public PlayerController playerController;
     public GameObject SlashedObject;
 
@@ -20,6 +20,7 @@ public class Katana : MonoBehaviour
     void Awake()
     {
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        playerModel = GameObject.Find("PlayerModel").transform;
     }
 
     void Update()
@@ -35,7 +36,7 @@ public class Katana : MonoBehaviour
     void Slash(int attackMultiplier)
     {
         RaycastHit hit;
-        if(Physics.Raycast(playerController.gameObject.transform.position, playerController.gameObject.transform.right, out hit, 2))
+        if(Physics.Raycast(playerModel.position, playerModel.forward, out hit, 2))
         {
             if(hit.collider.tag == "Enemy" || hit.collider.tag == "Destructible")
             {

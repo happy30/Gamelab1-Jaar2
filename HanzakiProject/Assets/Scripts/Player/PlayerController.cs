@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
     };
     public LevelType levelType;
 
+    //Combat
+    public bool invulnerable;
+    public float invulnerableTime;
+    public float invulnerableTimer;
+
 
     //Gather components
     void Awake()
@@ -52,6 +57,7 @@ public class PlayerController : MonoBehaviour
         SetMovement();
         CheckForWall();
         Move();
+        CheckVulnerability();
     }
 
 
@@ -192,6 +198,32 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    void CheckVulnerability()
+    {
+        if(invulnerable)
+        {
+            invulnerableTimer += Time.deltaTime;
+            if(invulnerableTimer > invulnerableTime)
+            {
+                invulnerable = false;
+                invulnerableTimer = 0;
+            }
+        }
+    }
+
+    public void GetHit(int damage)
+    {
+        if(!invulnerable)
+        {
+            stats.health--;
+            //knockback maybe
+        }
+    }
+
+    public void GetInvulnerable()
+    {
+        invulnerable = true;
+    }
 
     void OnTriggerStay(Collider col)
     {
