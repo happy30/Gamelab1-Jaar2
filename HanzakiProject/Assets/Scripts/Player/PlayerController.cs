@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
 
     public float xMovement;
+    public float zMovement;
     public float modelWidth;
     public bool inAir;
 
@@ -79,6 +80,34 @@ public class PlayerController : MonoBehaviour
         {
             playerModel.transform.eulerAngles = new Vector3(0, -90, 0);
         }
+        if(levelType == LevelType.TD)
+        {
+            zMovement = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+            if (zMovement > 0)
+            {
+                playerModel.transform.eulerAngles = new Vector3(0, -0, 0);
+                if (xMovement > 0)
+                {
+                    playerModel.transform.eulerAngles = new Vector3(0, 45, 0);
+                }
+                if (xMovement < 0)
+                {
+                    playerModel.transform.eulerAngles = new Vector3(0, -45, 0);
+                }
+            }
+            if (zMovement < 0)
+            {
+                playerModel.transform.eulerAngles = new Vector3(0, 180, 0);
+                if (xMovement > 0)
+                {
+                    playerModel.transform.eulerAngles = new Vector3(0, 135, 0);
+                }
+                if (xMovement < 0)
+                {
+                    playerModel.transform.eulerAngles = new Vector3(0, -135, 0);
+                }
+            }
+        }
     }
 
     //Move the player and let it jump
@@ -86,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
         {
-            transform.Translate(new Vector3(0, 0, xMovement));
+            transform.Translate(new Vector3(xMovement, 0, zMovement));
             if (Input.GetKey(InputManager.Jump))
             {
                 //Check if player is standing on Ground
