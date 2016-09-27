@@ -105,6 +105,7 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySight.cs" />
     <Compile Include="Assets\Scripts\Environment\DestructibleScript.cs" />
+    <Compile Include="Assets\Scripts\Environment\LevelPortal.cs" />
     <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
     <Compile Include="Assets\Scripts\Environment\WaterController.cs" />
     <Compile Include="Assets\Scripts\Environment\WaterOffset.cs" />
@@ -119,7 +120,6 @@
     <Compile Include="Assets\Scripts\Player\SmokeBomb.cs" />
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\InputManager.cs" />
-    <Compile Include="Assets\Scripts\System\LevelPortal.cs" />
     <Compile Include="Assets\Scripts\System\LoadController.cs" />
     <Compile Include="Assets\Scripts\System\OptionsSettings.cs" />
     <Compile Include="Assets\Scripts\System\PlayerSpawner.cs" />
