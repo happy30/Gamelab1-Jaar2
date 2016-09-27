@@ -17,6 +17,7 @@ public class InteractScript : MonoBehaviour
     public GameObject linkedObject;
     CutsceneController _cutsceneController;
 
+    public bool isHint;
     public float coolDown;
     public bool startCoolDown;
     public string interactText;

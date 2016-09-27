@@ -100,20 +100,20 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-void ResetPatrol()
-{
-    currentWayPoint = 0;
-    for (int i = 0; i < wayPoints.Count - 1; i++)
+    void ResetPatrol()
     {
-        if (topDownView) {
-            wayPoints[i] = new Vector3(Random.Range(transform.position.x - rangeOffSet, transform.position.x + rangeOffSet), Random.Range(transform.position.x - rangeOffSet, transform.position.y + rangeOffSet), Random.Range(transform.position.z - rangeOffSet, transform.position.z + rangeOffSet));
-        }
-        else
+        currentWayPoint = 0;
+        for (int i = 0; i < wayPoints.Count - 1; i++)
         {
-            wayPoints.Add(new Vector3(Random.Range(transform.position.x - rangeOffSet, transform.position.x + rangeOffSet), transform.position.y, transform.position.z));
+            if (topDownView) {
+                wayPoints[i] = new Vector3(Random.Range(transform.position.x - rangeOffSet, transform.position.x + rangeOffSet), Random.Range(transform.position.x - rangeOffSet, transform.position.y + rangeOffSet), Random.Range(transform.position.z - rangeOffSet, transform.position.z + rangeOffSet));
+            }
+            else
+            {
+                wayPoints.Add(new Vector3(Random.Range(transform.position.x - rangeOffSet, transform.position.x + rangeOffSet), transform.position.y, transform.position.z));
+            }
         }
     }
-}
 
     void Chase()
     {
@@ -153,7 +153,7 @@ void ResetPatrol()
         }
     }
 
-    void GetHit(int damageGet)
+    public void GetHit(int damageGet)
     {
         health -= damageGet;
         if (health <= 0)

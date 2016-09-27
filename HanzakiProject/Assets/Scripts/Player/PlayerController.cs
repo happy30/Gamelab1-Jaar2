@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody _rb;
     public StatsManager stats;
     public UIManager ui;
+    public GameObject playerModel;
+    public OptionsSettings optionsSettings;
 
 
     //Movement
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         ui = GameObject.Find("Canvas").GetComponent<UIManager>();
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
+        optionsSettings = GameObject.Find("GameManager").GetComponent<OptionsSettings>();
         modelWidth = 1;
     }
 
@@ -68,6 +71,14 @@ public class PlayerController : MonoBehaviour
     {
         speed = Input.GetKey(KeyCode.LeftShift) ? stats.runSpeed : stats.walkSpeed;
         xMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        if (xMovement > 0)
+        {
+            playerModel.transform.eulerAngles = new Vector3(0, 90, 0);
+        }
+        if (xMovement < 0)
+        {
+            playerModel.transform.eulerAngles = new Vector3(0, -90, 0);
+        }
     }
 
     //Move the player and let it jump
@@ -75,7 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!Camera.main.gameObject.GetComponent<CameraController>().inCutscene)
         {
-            transform.Translate(new Vector3(xMovement, 0, 0));
+            transform.Translate(new Vector3(0, 0, xMovement));
             if (Input.GetKey(InputManager.Jump))
             {
                 //Check if player is standing on Ground
@@ -98,14 +109,14 @@ public class PlayerController : MonoBehaviour
     void CheckForWall()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.right, out hit, modelWidth))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, modelWidth))
         {
             if (xMovement > 0)
             {
                 xMovement = 0;
             }
         }
-        if (Physics.Raycast(transform.position, -transform.right, out hit, modelWidth))
+        if (Physics.Raycast(transform.position, -transform.forward, out hit, modelWidth))
         {
             if (xMovement < 0)
             {
@@ -159,7 +170,18 @@ public class PlayerController : MonoBehaviour
         {
             if(col.gameObject.GetComponent<InteractScript>().interactType == InteractScript.InteractType.OnTrigger)
             {
-                col.gameObject.GetComponent<InteractScript>().Activate();
+                if(col.gameObject.GetComponent<InteractScript>().isHint)
+                {
+                    if (optionsSettings.displayHints)
+                    {
+                        col.gameObject.GetComponent<InteractScript>().Activate();
+                    }
+                }
+                else
+                {
+                    col.gameObject.GetComponent<InteractScript>().Activate();
+                }
+                
             }
             else if(col.gameObject.GetComponent<InteractScript>().interactType == InteractScript.InteractType.OnInput)
             {

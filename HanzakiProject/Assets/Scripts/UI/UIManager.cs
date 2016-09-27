@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour {
     public GameObject interactTextObject;
     public GameObject npcNameTextObject;
 
+    AudioSource _sound;
+
     //Play the letterbox animation
     public void EnterCutscene()
     {

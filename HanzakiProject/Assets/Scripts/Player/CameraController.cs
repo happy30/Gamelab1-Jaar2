@@ -47,11 +47,11 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.xMovement > 0.01)
         {
-            cameraOffsetX = 3;
+            cameraOffsetX = 5;
         }
         else if (playerController.xMovement < -0.01)
         {
-            cameraOffsetX = -3;
+            cameraOffsetX = -5;
         }
         else
         {
