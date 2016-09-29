@@ -22,6 +22,16 @@ public class CameraController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         followTime = 2;
+        if(playerController.levelType == PlayerController.LevelType.TD)
+        {
+            cameraOffsetY = 10;
+            transform.eulerAngles = new Vector3(30, 0, 0);
+        }
+        else
+        {
+            cameraOffsetY = 4;
+            transform.eulerAngles = new Vector3(18, 0, 0);
+        }
     }
 	
 	// Update is called once per frame
@@ -64,6 +74,14 @@ public class CameraController : MonoBehaviour
     //Focus the camera on an object
     public void FollowObject(GameObject followThis)
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);
+        if(playerController.levelType == PlayerController.LevelType.SS)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
+        }
+        
     }
 }

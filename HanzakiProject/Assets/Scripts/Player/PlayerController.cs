@@ -7,20 +7,10 @@ public class PlayerController : MonoBehaviour
 {
     //Components
     Rigidbody _rb;
-    public StatsManager stats;
-    public UIManager ui;
-    public GameObject playerModel;
-    public OptionsSettings optionsSettings;
-
-
-    //Movement
-    float speed;
-    public float jumpHeight;
-
-    public float xMovement;
-    public float zMovement;
-    public float modelWidth;
-    public bool inAir;
+    StatsManager stats;
+    UIManager ui;
+    GameObject playerModel;
+    OptionsSettings optionsSettings;
 
     //What Level
     public enum LevelType
@@ -30,10 +20,23 @@ public class PlayerController : MonoBehaviour
     };
     public LevelType levelType;
 
+    //Movement
+    float speed;
+    public float jumpHeight;
+    public float xMovement;
+    public float zMovement;
+    public float modelWidth;
+    bool inAir;
+
+    public bool onSlipperyTile;
+    public bool onSlipperyTileNearWall;
+
+
+
     //Combat
     public bool invulnerable;
     public float invulnerableTime;
-    public float invulnerableTimer;
+    float invulnerableTimer;
 
 
     //Gather components
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         ui = GameObject.Find("Canvas").GetComponent<UIManager>();
         stats = GameObject.Find("GameManager").GetComponent<StatsManager>();
         optionsSettings = GameObject.Find("GameManager").GetComponent<OptionsSettings>();
+        playerModel = GameObject.Find("PlayerModel");
         modelWidth = 1;
     }
 
@@ -57,6 +61,7 @@ public class PlayerController : MonoBehaviour
         SetMovement();
         CheckForWall();
         Move();
+        CheckForSlipperyTile();
         CheckVulnerability();
     }
 
@@ -77,43 +82,84 @@ public class PlayerController : MonoBehaviour
     void SetMovement()
     {
         speed = Input.GetKey(KeyCode.LeftShift) ? stats.runSpeed : stats.walkSpeed;
-        xMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        if (xMovement > 0)
+        if(!onSlipperyTile)
         {
-            playerModel.transform.eulerAngles = new Vector3(0, 90, 0);
-        }
-        if (xMovement < 0)
-        {
-            playerModel.transform.eulerAngles = new Vector3(0, -90, 0);
-        }
-        if(levelType == LevelType.TD)
-        {
-            zMovement = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-            if (zMovement > 0)
+            xMovement = Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime;
+            if (xMovement > 0)
             {
-                playerModel.transform.eulerAngles = new Vector3(0, -0, 0);
-                if (xMovement > 0)
-                {
-                    playerModel.transform.eulerAngles = new Vector3(0, 45, 0);
-                }
-                if (xMovement < 0)
-                {
-                    playerModel.transform.eulerAngles = new Vector3(0, -45, 0);
-                }
+                playerModel.transform.eulerAngles = new Vector3(0, 90, 0);
+                zMovement = 0;
             }
-            if (zMovement < 0)
+            if (xMovement < 0)
             {
-                playerModel.transform.eulerAngles = new Vector3(0, 180, 0);
-                if (xMovement > 0)
+                playerModel.transform.eulerAngles = new Vector3(0, -90, 0);
+                zMovement = 0;
+            }
+            if (levelType == LevelType.TD)
+            {
+                zMovement = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
+                if (zMovement > 0)
                 {
-                    playerModel.transform.eulerAngles = new Vector3(0, 135, 0);
+                    playerModel.transform.eulerAngles = new Vector3(0, -0, 0);
+                    xMovement = 0;
                 }
-                if (xMovement < 0)
+                if (zMovement < 0)
                 {
-                    playerModel.transform.eulerAngles = new Vector3(0, -135, 0);
+                    playerModel.transform.eulerAngles = new Vector3(0, 180, 0);
+                    xMovement = 0;
                 }
             }
         }
+        
+    }
+
+    void CheckForSlipperyTile()
+    {
+        if (IsTouching(20) != null)
+        {
+            if (IsTouching(20).tag == "Slippery")
+            {
+                onSlipperyTile = true;
+            }
+            else
+            {
+                if(IsTouching(2) != null)
+                {
+                    if (IsTouching(2).tag == "Ground")
+                    {
+                        onSlipperyTile = false;
+                    }
+                } 
+            }
+        }
+        if(onSlipperyTile && !onSlipperyTileNearWall)
+        {
+            if (playerModel.transform.eulerAngles == new Vector3(0, 90, 0))
+            {
+                xMovement =  stats.walkSpeed * Time.deltaTime;
+            }
+            else if (playerModel.transform.eulerAngles == new Vector3(0, -90, 0))
+            {
+                xMovement = -stats.walkSpeed * Time.deltaTime;
+            }
+            else if (playerModel.transform.eulerAngles == new Vector3(0, 0, 0))
+            {
+                zMovement = stats.walkSpeed * Time.deltaTime;
+            }
+            else if (playerModel.transform.eulerAngles == new Vector3(0, 180, 0))
+            {
+                zMovement = -stats.walkSpeed * Time.deltaTime;
+            }
+        }
+        if(onSlipperyTile && onSlipperyTileNearWall)
+        {
+            onSlipperyTile = false;
+            if(xMovement != 0 || zMovement != 0)
+            {
+                onSlipperyTile = true;
+            }
+        }
+
     }
 
     //Move the player and let it jump
@@ -125,9 +171,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(InputManager.Jump))
             {
                 //Check if player is standing on Ground
-                if (IsTouching() != null)
+                if (IsTouching(2) != null)
                 {
-                    if (IsTouching().tag == "Ground")
+                    if (IsTouching(2).tag == "Ground")
                     {
                         Debug.Log("jump");
                         if (!CheckIfJumping() && !inAir)
@@ -144,27 +190,48 @@ public class PlayerController : MonoBehaviour
     void CheckForWall()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, modelWidth))
+        if (Physics.Raycast(transform.position, -transform.right, out hit, modelWidth))
         {
-            if (xMovement > 0)
-            {
-                xMovement = 0;
-            }
-        }
-        if (Physics.Raycast(transform.position, -transform.forward, out hit, modelWidth))
-        {
+            onSlipperyTileNearWall = true;
             if (xMovement < 0)
             {
                 xMovement = 0;
             }
         }
+        if (Physics.Raycast(transform.position, transform.right, out hit, modelWidth))
+        {
+            onSlipperyTileNearWall = true;
+            if (xMovement > 0)
+            {
+                xMovement = 0;
+            }
+        }
+        if(levelType == LevelType.TD)
+        {
+            if (Physics.Raycast(transform.position, transform.forward, out hit, modelWidth))
+            {
+                onSlipperyTileNearWall = true;
+                if (zMovement > 0)
+                {
+                    zMovement = 0;
+                }
+            }
+            if (Physics.Raycast(transform.position, -transform.forward, out hit, modelWidth))
+            {
+                onSlipperyTileNearWall = true;
+                if (zMovement < 0)
+                {
+                    zMovement = 0;
+                }
+            }
+        }
     }
 
     //Check what object is beneath the player
-    public GameObject IsTouching()
+    public GameObject IsTouching(int range)
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 2))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, range))
         {
             return hit.collider.gameObject;
         }
