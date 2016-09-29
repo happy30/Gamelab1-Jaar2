@@ -7,7 +7,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     public PlayerController playerController;
-    float cameraOffset;
+    float cameraOffsetX;
+    public float cameraOffsetY;
 
     public float followTime;
     public bool inCutscene;
@@ -46,22 +47,23 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.xMovement > 0.01)
         {
-            cameraOffset = 3;
+            cameraOffsetX = 5;
         }
         else if (playerController.xMovement < -0.01)
         {
-            cameraOffset = -3;
+            cameraOffsetX = -5;
         }
         else
         {
-            cameraOffset = 0;
+            cameraOffsetX = 0;
         }
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffset, transform.position.y, -10f), followTime * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
     }
 
+    //Focus the camera on an object
     public void FollowObject(GameObject followThis)
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -10f), followTime * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);
     }
 }

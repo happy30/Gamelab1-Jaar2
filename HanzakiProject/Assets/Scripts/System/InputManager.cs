@@ -9,6 +9,10 @@ public class InputManager : MonoBehaviour
     public static KeyCode Shuriken = KeyCode.X;
     public static KeyCode Hook = KeyCode.C;
     public static KeyCode SmokeBomb = KeyCode.V;
+    public static KeyCode Jump;
+    public static KeyCode JumpSS = KeyCode.UpArrow;
+    public static KeyCode JumpTD = KeyCode.Space;
+
 
     void Start()
     {
@@ -32,6 +36,14 @@ public class InputManager : MonoBehaviour
         if (PlayerPrefs.HasKey("keyd"))
         {
             SmokeBomb = (KeyCode)PlayerPrefs.GetInt("keyd");
+        }
+        if(PlayerPrefs.HasKey("keyup"))
+        {
+            JumpSS = (KeyCode)PlayerPrefs.GetInt("keyup");
+        }
+        if (PlayerPrefs.HasKey("keyspace"))
+        {
+            JumpTD = (KeyCode)PlayerPrefs.GetInt("keyspace");
         }
 
         instance = this;
