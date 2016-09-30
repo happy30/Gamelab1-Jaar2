@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
     public float followTime;
     public bool inCutscene;
+    public bool inPuzzle;
 
     public GameObject followObject;
 
@@ -39,7 +40,18 @@ public class CameraController : MonoBehaviour
     {
         if(!inCutscene)
         {
-            FollowPlayer();
+            if(inPuzzle)
+            {
+                if(followObject != null)
+                {
+                    FollowObject(followObject);
+                }
+            }
+            else
+            {
+                FollowPlayer();
+            }
+            
         }
         else
         {
@@ -80,8 +92,16 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
-        }
-        
+            if(inPuzzle)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
+            }
+            else
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
+            }
+        }      
     }
 }
