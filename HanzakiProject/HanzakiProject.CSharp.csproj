@@ -208,7 +208,6 @@
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonBasic.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLit.shader" />
-    <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLitOutline-Terrain.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\Art\Shared\ignore.txt" />
     <None Include="Assets\Sound\AMB\ignore.txt" />

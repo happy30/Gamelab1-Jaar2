@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/PersonalScenes/JordiScene.unity
+=======
+- path: Assets/Scenes/Level2.unity
+>>>>>>> cc06607cae36a9a7196a0fb585b2161cc30d6d28
   isLoaded: 1
   isActive: 1
