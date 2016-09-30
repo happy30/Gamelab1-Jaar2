@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7bd4ef469a5ad584ebd818f0ab580ea8
-timeCreated: 1474543947
+guid: f2cb9e5c8529c6841aa51eceb576fa74
+timeCreated: 1475237616
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -25,7 +25,6 @@ ModelImporter:
     4300002: Knife003
     4300004: Knife002
     4300006: Knife1
-    4300008: Cylinder001
     9500000: //RootNode
   materials:
     importMaterials: 1
