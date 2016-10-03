@@ -3,7 +3,6 @@ using System.Collections;
 
 public class CameraChanger : MonoBehaviour
 {
-    public bool cameraChanged;
     public GameObject cameraPos;
 
 
@@ -22,16 +21,14 @@ public class CameraChanger : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            if(cameraChanged)
+            if(Camera.main.gameObject.GetComponent<CameraController>().inPuzzle)
             {
                 Camera.main.gameObject.GetComponent<CameraController>().inPuzzle = false;
-                cameraChanged = false;
             }
             else
             {
                 Camera.main.gameObject.GetComponent<CameraController>().followObject = cameraPos;
                 Camera.main.gameObject.GetComponent<CameraController>().inPuzzle = true;
-                cameraChanged = true;
             }
         }
     }
