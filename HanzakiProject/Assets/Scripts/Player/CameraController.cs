@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
         followTime = 2;
         if(playerController.levelType == PlayerController.LevelType.TD)
         {
-            cameraOffsetY = 20;
+            cameraOffsetY = 10;
             transform.eulerAngles = new Vector3(30, 0, 0);
         }
         else
@@ -68,7 +68,7 @@ public class CameraController : MonoBehaviour
             cameraOffsetX = 0;
         }
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 20f), followTime * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
     }
 
     //Focus the camera on an object
