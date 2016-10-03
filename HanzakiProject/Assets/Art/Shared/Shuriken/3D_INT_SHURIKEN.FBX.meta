@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:HanzakiProject/Assets/Art/Shared/Shuriken/3D_INT_SHURIKEN.FBX.meta
 guid: 2db0c23d785fe83479c26cd1fb2334a2
 timeCreated: 1475239457
+=======
+guid: 7bd4ef469a5ad584ebd818f0ab580ea8
+timeCreated: 1474543947
+>>>>>>> 5486fded6dd68965c0bf7213edcf4fd8b193b14d:HanzakiProject/Assets/Art/Shared/Shuriken/3D_MODL_WPN_SHRKN.max.meta
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
