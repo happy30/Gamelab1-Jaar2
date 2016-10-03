@@ -79,13 +79,13 @@ public class CameraController : MonoBehaviour
         {
             cameraOffsetX = 0;
         }
-<<<<<<< HEAD
+
 
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
-=======
+
         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 20f), followTime * Time.deltaTime);
->>>>>>> 5486fded6dd68965c0bf7213edcf4fd8b193b14d
+
     }
 
     //Focus the camera on an object
