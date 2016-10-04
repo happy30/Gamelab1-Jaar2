@@ -101,7 +101,6 @@
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\Twirl.cs" />
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\Vortex.cs" />
-    <Compile Include="Assets\CameraChanger.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChaseSpawener.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChasing.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyHead.cs" />
@@ -121,7 +120,6 @@
     <Compile Include="Assets\Scripts\Player\Shuriken.cs" />
     <Compile Include="Assets\Scripts\Player\ShurikenObject.cs" />
     <Compile Include="Assets\Scripts\Player\SmokeBomb.cs" />
-    <Compile Include="Assets\Scripts\System\BGMPlayer.cs" />
     <Compile Include="Assets\Scripts\System\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\System\InputManager.cs" />
     <Compile Include="Assets\Scripts\System\LoadController.cs" />
@@ -208,6 +206,7 @@
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonBasic.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLit.shader" />
+    <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLitOutline-Terrain.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\Art\Shared\ignore.txt" />
     <None Include="Assets\Sound\AMB\ignore.txt" />
