@@ -28,6 +28,7 @@ public class Katana : MonoBehaviour
         if(Input.GetKey(InputManager.Slash))
         {
             //Animator.playanimation
+            playerController.Dash(5);
         }
 
     }

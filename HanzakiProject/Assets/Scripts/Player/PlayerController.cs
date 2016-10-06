@@ -31,7 +31,11 @@ public class PlayerController : MonoBehaviour
     public bool onSlipperyTile;
     public bool onSlipperyTileNearWall;
 
-
+    public int buttonCount;
+    public KeyCode lastKey;
+    public float doubleTapTime;
+    public float dashSpeed;
+    public float dashCooldown;
 
     //Combat
     public bool invulnerable;
@@ -61,8 +65,10 @@ public class PlayerController : MonoBehaviour
         SetMovement();
         CheckForWall();
         Move();
+        CheckForDash();
         CheckForSlipperyTile();
         CheckVulnerability();
+        Debug.DrawRay(playerModel.transform.position, playerModel.transform.forward);
     }
 
 
@@ -109,8 +115,85 @@ public class PlayerController : MonoBehaviour
                     xMovement = 0;
                 }
             }
+        }      
+    }
+
+    void CheckForDash()
+    {
+        if(levelType == LevelType.TD)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                CheckForDoubleTap(KeyCode.UpArrow);
+                lastKey = KeyCode.UpArrow;
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                CheckForDoubleTap(KeyCode.DownArrow);
+                lastKey = KeyCode.DownArrow;
+            }
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            CheckForDoubleTap(KeyCode.RightArrow);
+            lastKey = KeyCode.RightArrow;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            CheckForDoubleTap(KeyCode.LeftArrow);
+            lastKey = KeyCode.LeftArrow;
+        }
+
+        if (doubleTapTime < 0)
+        {
+            doubleTapTime = 0;
+            buttonCount = 0;
+        }
+        else
+        {
+            doubleTapTime -= Time.deltaTime;
+        }
+
+        if(dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            dashCooldown = 0;
+        }
+    }
+
+
+    void CheckForDoubleTap(KeyCode key)
+    {
+        Debug.Log(key);
+        if(buttonCount == 1)
+        {
+            if(lastKey == key)
+            {
+                Debug.Log("dash!!");
+                if(dashCooldown <= 0)
+                {
+                    Dash(dashSpeed);
+                    dashCooldown = 2f;
+                }
+                buttonCount = 0;
+            }
+            else
+            {
+                buttonCount = 0;
+            }
+            
+        }
+        else
+        {
+            buttonCount++;
+            doubleTapTime = 0.5f;
+        }
     }
 
     void CheckForSlipperyTile()
@@ -136,19 +219,19 @@ public class PlayerController : MonoBehaviour
         {
             if (playerModel.transform.eulerAngles == new Vector3(0, 90, 0))
             {
-                xMovement =  stats.walkSpeed * Time.deltaTime;
+                xMovement =  stats.runSpeed * Time.deltaTime;
             }
             else if (playerModel.transform.eulerAngles == new Vector3(0, -90, 0))
             {
-                xMovement = -stats.walkSpeed * Time.deltaTime;
+                xMovement = -stats.runSpeed * Time.deltaTime;
             }
             else if (playerModel.transform.eulerAngles == new Vector3(0, 0, 0))
             {
-                zMovement = stats.walkSpeed * Time.deltaTime;
+                zMovement = stats.runSpeed * Time.deltaTime;
             }
             else if (playerModel.transform.eulerAngles == new Vector3(0, 180, 0))
             {
-                zMovement = -stats.walkSpeed * Time.deltaTime;
+                zMovement = -stats.runSpeed * Time.deltaTime;
             }
         }
         if(onSlipperyTile && onSlipperyTileNearWall)
@@ -160,6 +243,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+
+    public void Dash(float distance)
+    {
+        _rb.velocity = playerModel.transform.forward * distance;
     }
 
     //Move the player and let it jump

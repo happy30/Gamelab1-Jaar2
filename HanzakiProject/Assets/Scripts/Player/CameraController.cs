@@ -12,6 +12,7 @@ public class CameraController : MonoBehaviour
 
     public float followTime;
     public bool inCutscene;
+    public bool inPuzzle;
 
     public GameObject followObject;
 
@@ -21,7 +22,7 @@ public class CameraController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        followTime = 2;
+        followTime = 2.5f;
         if(playerController.levelType == PlayerController.LevelType.TD)
         {
             cameraOffsetY = 10;
@@ -29,8 +30,8 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            cameraOffsetY = 4;
-            transform.eulerAngles = new Vector3(18, 0, 0);
+            cameraOffsetY = 5;
+            transform.eulerAngles = new Vector3(8, 0, 0);
         }
     }
 	
@@ -39,7 +40,18 @@ public class CameraController : MonoBehaviour
     {
         if(!inCutscene)
         {
-            FollowPlayer();
+            if(inPuzzle)
+            {
+                if(followObject != null)
+                {
+                    FollowObject(followObject);
+                }
+            }
+            else
+            {
+                FollowPlayer();
+            }
+            
         }
         else
         {
@@ -68,7 +80,11 @@ public class CameraController : MonoBehaviour
             cameraOffsetX = 0;
         }
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 10f), followTime * Time.deltaTime);
+
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 15f), followTime * Time.deltaTime);
+        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 20f), followTime * Time.deltaTime);
+
     }
 
     //Focus the camera on an object
@@ -76,12 +92,20 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.levelType == PlayerController.LevelType.SS)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -4f), followTime * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
-        }
-        
+            if(inPuzzle)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, followThis.transform.position.z), followTime * Time.deltaTime);
+            }
+            else
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
+            }
+        }      
     }
 }

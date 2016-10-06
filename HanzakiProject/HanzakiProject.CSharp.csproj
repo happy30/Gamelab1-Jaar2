@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyHead.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemySight.cs" />
+    <Compile Include="Assets\Scripts\Environment\CameraChanger.cs" />
     <Compile Include="Assets\Scripts\Environment\DestructibleScript.cs" />
     <Compile Include="Assets\Scripts\Environment\LevelPortal.cs" />
     <Compile Include="Assets\Scripts\Environment\PickUpScript.cs" />
@@ -209,9 +210,7 @@
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLitOutline-Terrain.shader" />
     <None Include="Assets\Art\Shared\ToonShading\Shaders\ToonLitOutline.shader" />
     <None Include="Assets\Art\Shared\ignore.txt" />
-    <None Include="Assets\Sound\AMB\ignore.txt" />
     <None Include="Assets\Sound\BGM\ignore.txt" />
-    <None Include="Assets\Sound\SFX\ignore.txt" />
     <None Include="Assets\Sprites\ignore.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
