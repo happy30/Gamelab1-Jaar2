@@ -101,6 +101,7 @@
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\Twirl.cs" />
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Art\Shared\ImageEffects\Scripts\Vortex.cs" />
+    <Compile Include="Assets\Scripts\Enemies\EnemyBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChaseSpawener.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyChasing.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyHead.cs" />

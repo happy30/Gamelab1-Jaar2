@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000010622084898}
+  m_RootGameObject: {fileID: 1000010307394082}
   m_IsPrefabParent: 1
---- !u!1 &1000010622084898
+--- !u!1 &1000010307394082
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000012137778650}
-  - 33: {fileID: 33000011882398304}
-  - 23: {fileID: 23000011772996580}
-  - 114: {fileID: 114000011251838514}
-  - 114: {fileID: 114000013103578528}
+  - 4: {fileID: 4000010865798210}
+  - 33: {fileID: 33000013001378028}
+  - 23: {fileID: 23000013873907654}
+  - 114: {fileID: 114000014060988040}
+  - 114: {fileID: 114000013155198250}
+  - 54: {fileID: 54000011636046928}
   m_Layer: 0
-  m_Name: 3D_ENV_STONE1
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012137778650
+--- !u!4 &4000010865798210
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010622084898}
+  m_GameObject: {fileID: 1000010307394082}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 164.62, y: 13.36, z: 312.81}
+  m_LocalPosition: {x: 164.65895, y: 15.69, z: 312.73517}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000011772996580
+--- !u!23 &23000013873907654
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010622084898}
+  m_GameObject: {fileID: 1000010307394082}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -72,19 +73,48 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000011882398304
+--- !u!33 &33000013001378028
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010622084898}
-  m_Mesh: {fileID: 4300000, guid: 1a51762bea9bb6a4c99df74a5f8dba86, type: 3}
---- !u!114 &114000011251838514
+  m_GameObject: {fileID: 1000010307394082}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54000011636046928
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010307394082}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &114000013155198250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010622084898}
+  m_GameObject: {fileID: 1000010307394082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6aa1f8b67284e94ba8b8631a19bbf21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  fieldOfViewAngle: 120
+  playerInView: 0
+--- !u!114 &114000014060988040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010307394082}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35dc273bb0460ae4fab6e76ae4152c39, type: 3}
@@ -107,17 +137,3 @@ MonoBehaviour:
   health: 6
   healthSprite: {fileID: 100000, guid: 2db0c23d785fe83479c26cd1fb2334a2, type: 3}
   spriteArray: []
---- !u!114 &114000013103578528
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010622084898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6aa1f8b67284e94ba8b8631a19bbf21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  fieldOfViewAngle: 120
-  playerInView: 0
