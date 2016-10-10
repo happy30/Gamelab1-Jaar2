@@ -77,7 +77,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if(currentWayPoint >= wayPoints.Count)
         {
-            ResetPatrol();
+            //ResetPatrol();
+            currentWayPoint = 0;
         }
         agent.SetDestination(wayPoints[currentWayPoint]);
 
@@ -100,7 +101,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void ResetPatrol()
+  /*  void ResetPatrol()
     {
         currentWayPoint = 0;
         for (int i = 0; i < wayPoints.Count - 1; i++)
@@ -113,7 +114,7 @@ public class EnemyMovement : MonoBehaviour
                 wayPoints.Add(new Vector3(Random.Range(transform.position.x - rangeOffSet, transform.position.x + rangeOffSet), transform.position.y, transform.position.z));
             }
         }
-    }
+    }*/
 
     void Chase()
     {
