@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        image = healthSprite.GetComponent<Image>();
+        //image = healthSprite.GetComponent<Image>();
         for (int i = 0; i < maxWayPoints; i++)
         {
             if (topDownView)
