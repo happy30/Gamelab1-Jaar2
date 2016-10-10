@@ -22,7 +22,11 @@ public class CameraController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+<<<<<<< HEAD
         followTime = 1.5f;
+=======
+        followTime = 2.5f;
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8
         if(playerController.levelType == PlayerController.LevelType.TD)
         {
             cameraOffsetY = 10;
@@ -30,8 +34,8 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            cameraOffsetY = 4;
-            transform.eulerAngles = new Vector3(18, 0, 0);
+            cameraOffsetY = 5;
+            transform.eulerAngles = new Vector3(8, 0, 0);
         }
     }
 	
@@ -82,7 +86,10 @@ public class CameraController : MonoBehaviour
 
 
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 15f), followTime * Time.deltaTime);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8
         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
         //transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 20f), followTime * Time.deltaTime);
 
@@ -93,7 +100,7 @@ public class CameraController : MonoBehaviour
     {
         if(playerController.levelType == PlayerController.LevelType.SS)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -8f), followTime * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, transform.position.y, -4f), followTime * Time.deltaTime);
         }
         else
         {

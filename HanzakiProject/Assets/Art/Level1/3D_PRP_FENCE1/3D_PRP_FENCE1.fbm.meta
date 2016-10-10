@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 670e0fa57efefeb4a88823d28670b494
 folderAsset: yes
+<<<<<<< HEAD:HanzakiProject/Assets/Art/Level1/3D_PRP_FENCE1/3D_PRP_FENCE1.fbm.meta
 timeCreated: 1475234145
+=======
+timeCreated: 1475582410
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8:HanzakiProject/Assets/Art/Level1/3D_PRP_FENCE1/3D_PRP_FENCE1.fbm.meta
 licenseType: Free
 DefaultImporter:
   userData: 
