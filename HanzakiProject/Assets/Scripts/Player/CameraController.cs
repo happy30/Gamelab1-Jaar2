@@ -22,7 +22,11 @@ public class CameraController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+<<<<<<< HEAD
+        followTime = 1.5f;
+=======
         followTime = 2.5f;
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8
         if(playerController.levelType == PlayerController.LevelType.TD)
         {
             cameraOffsetY = 10;
@@ -82,6 +86,10 @@ public class CameraController : MonoBehaviour
 
 
         transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 15f), followTime * Time.deltaTime);
+<<<<<<< HEAD
+
+=======
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8
         transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
         //transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 20f), followTime * Time.deltaTime);
 

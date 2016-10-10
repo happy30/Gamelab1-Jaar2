@@ -1,5 +1,6 @@
 5.4.0f3:2.2.0.0
 StandaloneWindows
+<<<<<<< HEAD
 C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
@@ -13,3 +14,22 @@ C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/Unity
 C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll
 C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
 C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
+=======
+D:/Nieuwe map (2)/Editor/Data/Managed/UnityEngine.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
+<<<<<<< HEAD
+D:/Nieuwe map (2)/Editor/Data/Managed/UnityEditor.dll
+=======
+D:/Nieuwe map (2)/Editor/Data/Managed/UnityEditor.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
+D:/Nieuwe map (2)/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
+D:/Nieuwe map (2)/Editor/Data/Managed/UnityEditor.Graphs.dll
+D:/Nieuwe map (2)/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8
+>>>>>>> c930dcf0ae088f8f5cb2e0ce41d54c57fd6c697f
