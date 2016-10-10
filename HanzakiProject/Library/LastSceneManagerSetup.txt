@@ -1,8 +1,1 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/PersonalScenes/JordiScene.unity
-=======
-- path: Assets/Scenes/PersonalScenes/SaschaScene.unity
->>>>>>> c9647ff8dc5127f892cfaa6d3991f45b505779c4
-  isLoaded: 1
-  isActive: 1
+sceneSetups: []
