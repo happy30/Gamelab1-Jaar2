@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:HanzakiProject/Assets/Art/Level2/FallenTreeTrunk/3D_ENV_FallenTrunk.fbm/2D_ENV_FALLENTREE.png.meta
 guid: bb3fa12062927f240a36f61a094e4c2b
 timeCreated: 1476103654
+=======
+guid: e535f80b5ff6a9d48896808722b13968
+timeCreated: 1476103515
+>>>>>>> 7673496ad979bf8e19599f722703c7914505a297:HanzakiProject/Assets/Art/Level2/FallenTreeTrunk/3D_ENV_FallenTrunk.fbm/2D_ENV_FALLENTREE.png.meta
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
