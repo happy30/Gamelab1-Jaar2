@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     public float followTime;
     public bool inCutscene;
     public bool inPuzzle;
+    public bool hookNearby;
 
     public GameObject followObject;
 
