@@ -1,1 +1,12 @@
+<<<<<<< HEAD
 sceneSetups: []
+=======
+<<<<<<< HEAD
+sceneSetups: []
+=======
+sceneSetups:
+- path: Assets/Scenes/PersonalScenes/JordiScene.unity
+  isLoaded: 1
+  isActive: 1
+>>>>>>> 7673496ad979bf8e19599f722703c7914505a297
+>>>>>>> 775cd9b2e3d09c670924a1df062ebb9704b7a44b
