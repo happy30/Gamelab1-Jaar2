@@ -120,64 +120,50 @@ public class PlayerController : MonoBehaviour
 
     void CheckForDash()
     {
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if(levelType == LevelType.TD)
         {
-            CheckForDoubleTap(KeyCode.UpArrow);
-            lastKey = KeyCode.UpArrow;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                CheckForDoubleTap(KeyCode.UpArrow);
+                lastKey = KeyCode.UpArrow;
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                CheckForDoubleTap(KeyCode.DownArrow);
+                lastKey = KeyCode.DownArrow;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            CheckForDoubleTap(KeyCode.DownArrow);
-            lastKey = KeyCode.DownArrow;
+            CheckForDoubleTap(KeyCode.RightArrow);
+            lastKey = KeyCode.RightArrow;
+        }
 
-            if (levelType == LevelType.TD)
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    CheckForDoubleTap(KeyCode.UpArrow);
-                    lastKey = KeyCode.UpArrow;
-                }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            CheckForDoubleTap(KeyCode.LeftArrow);
+            lastKey = KeyCode.LeftArrow;
+        }
 
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    CheckForDoubleTap(KeyCode.DownArrow);
-                    lastKey = KeyCode.DownArrow;
-                }
+        if (doubleTapTime < 0)
+        {
+            doubleTapTime = 0;
+            buttonCount = 0;
+        }
+        else
+        {
+            doubleTapTime -= Time.deltaTime;
+        }
 
-            }
-
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                CheckForDoubleTap(KeyCode.RightArrow);
-                lastKey = KeyCode.RightArrow;
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                CheckForDoubleTap(KeyCode.LeftArrow);
-                lastKey = KeyCode.LeftArrow;
-            }
-
-            if (doubleTapTime < 0)
-            {
-                doubleTapTime = 0;
-                buttonCount = 0;
-            }
-            else
-            {
-                doubleTapTime -= Time.deltaTime;
-            }
-
-            if (dashCooldown > 0)
-            {
-                dashCooldown -= Time.deltaTime;
-            }
-            else
-            {
-                dashCooldown = 0;
-            }
+        if(dashCooldown > 0)
+        {
+            dashCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            dashCooldown = 0;
         }
     }
 
@@ -385,7 +371,7 @@ public class PlayerController : MonoBehaviour
         if(!invulnerable)
         {
             stats.health--;
-            //knockback maybe
+            //knockback maybe.
         }
     }
 

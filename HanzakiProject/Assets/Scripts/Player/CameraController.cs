@@ -44,18 +44,7 @@ public class CameraController : MonoBehaviour
     {
         if(!inCutscene)
         {
-            if(inPuzzle)
-            {
-                if(followObject != null)
-                {
-                    FollowObject(followObject);
-                }
-            }
-            else
-            {
-                FollowPlayer();
-            }
-            
+            FollowPlayer();
         }
         else
         {
@@ -84,10 +73,17 @@ public class CameraController : MonoBehaviour
             cameraOffsetX = 0;
         }
 
-
-        transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 15f), followTime * Time.deltaTime);
-
-        transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+        if(!inPuzzle)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 15f), followTime * Time.deltaTime);
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + 30, player.transform.position.z), followTime * Time.deltaTime);
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
+        }
+        
         //transform.position = Vector3.Lerp(transform.position, new Vector3(player.transform.position.x + cameraOffsetX, player.transform.position.y + cameraOffsetY, player.transform.position.z - 20f), followTime * Time.deltaTime);
 
     }
@@ -101,16 +97,9 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            if(inPuzzle)
-            {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(80, 0, 0), followTime * Time.deltaTime);
-                transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, followThis.transform.position.z), followTime * Time.deltaTime);
-            }
-            else
-            {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
-                transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
-            }
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(30, 0, 0), followTime * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(followThis.transform.position.x, followThis.transform.position.y + 5, -8f), followTime * Time.deltaTime);
+
         }      
     }
 }
