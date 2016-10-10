@@ -120,6 +120,18 @@ public class PlayerController : MonoBehaviour
 
     void CheckForDash()
     {
+<<<<<<< HEAD
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            CheckForDoubleTap(KeyCode.UpArrow);
+            lastKey = KeyCode.UpArrow;
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        { 
+            CheckForDoubleTap(KeyCode.DownArrow);
+            lastKey = KeyCode.DownArrow;
+=======
         if(levelType == LevelType.TD)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -133,6 +145,7 @@ public class PlayerController : MonoBehaviour
                 CheckForDoubleTap(KeyCode.DownArrow);
                 lastKey = KeyCode.DownArrow;
             }
+>>>>>>> c0306b9f554df2f8ffb86dc7265f2d249843f5f8
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))

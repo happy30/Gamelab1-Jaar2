@@ -42,7 +42,7 @@ GameObject:
   - 114: {fileID: 114000011366069152}
   - 114: {fileID: 114000014240909074}
   - 114: {fileID: 114000012478805436}
-  - 114: {fileID: 114000013844898814}
+  - 114: {fileID: 114000010942075822}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -200,8 +200,24 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &114000010942075822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013027347028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6bdddf3c9ce5f4db3ac6f7da7933f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordType: 0
+  playerModel: {fileID: 0}
+  playerController: {fileID: 0}
+  SlashedObject: {fileID: 0}
+  attackPower: 1
 --- !u!114 &114000011366069152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,22 +251,6 @@ MonoBehaviour:
   reloadTimer: 0
   particleObject: {fileID: 0}
   _playerController: {fileID: 0}
---- !u!114 &114000013844898814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013027347028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6bdddf3c9ce5f4db3ac6f7da7933f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swordType: 0
-  playerModel: {fileID: 0}
-  playerController: {fileID: 0}
-  SlashedObject: {fileID: 0}
-  attackPower: 1
 --- !u!114 &114000014240909074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelType: 1
-  jumpHeight: 15
+  jumpHeight: 10
   xMovement: 0
   zMovement: 0
   modelWidth: 2
@@ -272,7 +272,7 @@ MonoBehaviour:
   buttonCount: 0
   lastKey: 0
   doubleTapTime: 0
-  dashSpeed: 25
+  dashSpeed: 1
   dashCooldown: 0
   invulnerable: 0
   invulnerableTime: 0
